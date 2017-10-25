@@ -18,6 +18,8 @@ GOTO p / GO TO p - jump to paragraph number p, example: GOTO 5
 SHOW ALL QUESTIONS - show interviewer questions
 SHOW ALL ANSWERS - show inteviewee replies
 SUMMARY - show summary of interviewee replies
+
+Note that you can also type these comands lowercase
   `
 
 if (!process.env.token) {
