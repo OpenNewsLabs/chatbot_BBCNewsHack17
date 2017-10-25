@@ -9,6 +9,16 @@ Proof of concept demo of chatbot conversational interface for transcription serv
 - [Google doc tmp R&D draft](https://docs.google.com/document/d/1n6B1vyQysIEeDfoDUqnVNzb7RVy_MNuyvrVekLQ0YZ4/edit?usp=sharing)
 - [Video of presentation]() _coming soon_.
 
+## Screenshots
+
+![Demo 1](screenshots/1_add_audio.png)
+
+![Demo 2](screenshots/2_play.png)
+
+![Demo 3](screenshots/3_summary.png)
+
+
+
 
 ## Demo giffs
 
