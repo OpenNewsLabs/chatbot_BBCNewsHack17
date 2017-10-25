@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/OpenNewsLabs/chatbot_BBCNewsHack17#readme",
   "dependencies": {
+    "axios": "^0.17.0",
     "botkit": "^0.6.4",
     "dotenv": "^4.0.0"
   }

@@ -5,6 +5,7 @@ const os = require('os');
 const util = require('util');
 const timers = require('timers');
 const setTimeoutPromise = util.promisify(timers.setTimeout);
+const axios = require('axios');
 
 const transcript = require('./sample-transcript.json');
 const qa = require('./question_verification_sample.json');
@@ -246,6 +247,25 @@ SHOW ALL QUESTIONS - show interviewer questions
 SHOW ALL ANSWERS - show inteviewee replies
 SUMMARY - show summary of interviewee replies
   `);
+});
+
+controller.hears(['DOWNLOAD'], 'direct_message,direct_mention,mention', function(bot, message) {
+  axios.post('https://slack.com/api/files.upload', {
+      token: process.env.stoken,
+      channels: 'bbcnewshack17',
+      content: 'zee transcript',
+      filename: 'transcript.txt'
+    }, {
+      headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 // controller.hears(['QA'], 'direct_message,direct_mention,mention', function(bot, message) {
