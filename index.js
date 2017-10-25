@@ -135,7 +135,7 @@ function getQAasMessage2(index) {
       {
         'fallback': `${question}: ${answer}`,
         'title': '',
-        'text': answer,
+        'text': `*${paragraphId}* - ${answer}`,
         'color': '#7CD197'
       }
     ],
