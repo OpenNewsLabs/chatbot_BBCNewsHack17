@@ -14,9 +14,9 @@ TRANSCRIBE - transcribe last uploaded media
 PLAY - play transcript at reading speed
 PAUSE - pauses playing
 STOP - stop playing
-GOTO p / GO TO p - jump to paragraph number p, example: GOTO 5
-SHOW ALL QUESTIONS - show interviewer questions
-SHOW ALL ANSWERS - show inteviewee replies
+GOTO p / GO TO p / GO p - jump to paragraph number p, example: GOTO 5
+SHOW ALL QUESTIONS / ALLQ - show interviewer questions
+SHOW ALL ANSWERS / ALLA - show inteviewee replies
 SUMMARY - show summary of interviewee replies
 
 Note that you can also type these comands lowercase
@@ -218,7 +218,7 @@ controller.hears([ 'STOP'], 'direct_message,direct_mention,mention', function(bo
 });
 
 
-controller.hears(['GOTO (.*)', 'GO TO (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['GOTO (.*)', 'GO TO (.*)', 'GO (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
   var para = parseInt(message.match[1]);
   timers.clearTimeout(playTimeout);
   currentPara = para;
