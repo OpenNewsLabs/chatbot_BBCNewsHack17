@@ -68,7 +68,6 @@ Where question, answer, and confidence are what is returned by java jar, see thi
 
 - **score**: 3.4447591093720233
 
-```
 
 
 ## Contributors
