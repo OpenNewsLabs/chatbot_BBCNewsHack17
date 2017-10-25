@@ -267,7 +267,7 @@ function getTranscriptText() {
     const t = [];
     for(let i = 0; i < transcript.length; i++) {
       const {text, username} = getParagraphAsMessage(i);
-      t.push(`${username} ${text}`);
+      t.push(`\n${username} ${text}`);
     }
     return t.join('\n');
 }
@@ -281,46 +281,8 @@ controller.hears(['DOWNLOAD'], 'direct_message,direct_mention,mention', function
   }, function(err, httpResponse, body){
     console.log(err, body);
   });
-  // axios.post('https://slack.com/api/files.upload', {
-  //     token: process.env.stoken,
-  //     channels: 'bbcnewshack17',
-  //     content: 'zee transcript',
-  //     filename: 'transcript.txt'
-  //   }, {
-  //     headers: {
-  //     'Content-type': 'application/x-www-form-urlencoded'
-  //     }
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 });
 
-// controller.hears(['QA'], 'direct_message,direct_mention,mention', function(bot, message) {
-//   // bot.reply(message, 'Hello ' + user.name + '!!');
-//   var reply_with_attachments = {
-//     'username': 'My bot' ,
-//     'text': 'Q/A pair found for XXXX',
-//     'attachments': [
-//       {
-//         'fallback': 'What did Napoleon conquer Ottoman-ruled Egypt in in 1798? >>> In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. in an attempt to strike at British trade routes with India ',
-//         'title': 'What did Napoleon conquer Ottoman-ruled Egypt in in 1798?',
-//         'text': 'In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. in an attempt to strike at British trade routes with India ',
-//         'color': '#7CD197'
-//       }
-//     ],
-//     'icon_url': 'http://lorempixel.com/48/48'
-//     }
-//
-//     bot.reply(message, reply_with_attachments);
-//     // bot.say(reply_with_attachments);
-// });
-
-// let typing = null;
-// let wasPlaying = false;
 
 controller.on('user_typing', function(bot, message) {
   if (! playing) return;
@@ -330,16 +292,6 @@ controller.on('user_typing', function(bot, message) {
     channel: 'bbcnewshack17',
     text: 'Paused due to user typing, resume with @bot PLAY',
   });
-  // timers.clearTimeout(typing);
-  //
-  // typing = setTimeoutPromise(1000).then(() => {
-  //   timers.clearTimeout(typing);
-  //   // playing = true;
-  //   play();
-  // });
-
-
-
 });
 
 controller.on('file_shared', function(bot, message) {
@@ -348,35 +300,6 @@ controller.on('file_shared', function(bot, message) {
       channel: 'bbcnewshack17',
       text: `If you want me to transcribe this file, use @bot TRANSCRIBE, for more options use @bot HELP ${helpMessage}`,
     });
-    // message.type = 'message';
-    // message.channel = 'bbcnewshack17';
-    // bot.startConversation(
-    //   message,
-    //   // {
-    //   // user: message.user_id,
-    //   // channel: message.user_id, //'bbcnewshack17',
-    //   // text: 'dummy'
-    //   // } ,
-    //   function(err, convo) {
-    //
-    //     convo.ask('Do you want me to transcribe this media file?', [
-    //         {
-    //             pattern: bot.utterances.yes,
-    //             callback: function(response, convo) {
-    //                 convo.say('Transcribing...');
-    //                 convo.next();
-    //             }
-    //         },
-    //     {
-    //         pattern: bot.utterances.no,
-    //         default: true,
-    //         callback: function(response, convo) {
-    //             convo.say('*Phew!*');
-    //             convo.next();
-    //         }
-    //     }
-    //     ]);
-    // });
 });
 
 
