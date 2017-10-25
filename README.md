@@ -1,4 +1,4 @@
-# README
+# Transcription Chat Bot
 
 Proof of concept demo of chatbot conversational interface for transcription service.      
 
