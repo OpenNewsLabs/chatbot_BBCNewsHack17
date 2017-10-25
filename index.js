@@ -17,8 +17,8 @@ PLAY - play transcript at reading speed
 PAUSE - pauses playing
 STOP - stop playing
 GOTO p / GO TO p / GO p - jump to paragraph number p, example: GOTO 5
-SHOW ALL QUESTIONS - show interviewer questions
-SHOW ALL ANSWERS - show inteviewee replies
+SHOW ALL QUESTIONS /SHOW ALLQ - show interviewer questions
+SHOW ALL ANSWERS  / SHOW ALLA - show inteviewee replies
 SUMMARY - show summary of interviewee replies
 
 Note that you can also type these comands lowercase
