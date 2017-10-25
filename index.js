@@ -246,9 +246,11 @@ controller.hears(['TRANSCRIBE'], 'direct_message,direct_mention,mention', functi
   bot.reply(message, 'transcribing... Your transcription will be ready in 3 minutes.', () => {
     playing = false;
     currentPara = 0;
-    bot.say({
-      channel: 'bbcnewshack17',
-      text: 'Transcribed, to play the transcript use @bot PLAY, for more options use @bot HELP'
+    setTimeoutPromise(3000).then(() => {
+      bot.say({
+        channel: 'bbcnewshack17',
+        text: 'Transcribed, to play the transcript use @bot PLAY, for more options use @bot HELP'
+      });
     });
   });
 });
