@@ -1,10 +1,13 @@
 # README
 
-[Google doc tmp draft](https://docs.google.com/document/d/1n6B1vyQysIEeDfoDUqnVNzb7RVy_MNuyvrVekLQ0YZ4/edit?usp=sharing)
+Proof of concept demo of chatbot conversational interface for transcription service.      
 
-[Slides](https://docs.google.com/presentation/d/1ky52Q9UJ9VV_gl6hKQWBS5GrOIARIqogwSZbkswXcY0/edit#slide=id.p)
+**Use case**: Journalist working with audio interviews, recorded on their smartphone, for a text article.      
+**Prototype**: user uploads audio file onto slack channel, slack bot handles transcriptions, and allows user to query transcription, for questions, answers, both, and insight into the text.             
 
-
+- [Presentation Slides](https://docs.google.com/presentation/d/1ky52Q9UJ9VV_gl6hKQWBS5GrOIARIqogwSZbkswXcY0/edit?usp=sharing)
+- [Google doc tmp R&D draft](https://docs.google.com/document/d/1n6B1vyQysIEeDfoDUqnVNzb7RVy_MNuyvrVekLQ0YZ4/edit?usp=sharing)
+- [Video of presentation]() _coming soon_.
 
 
 ## Question verification component / summariztion 
@@ -14,16 +17,16 @@ Using ["Question Generation via Overgenerating Transformations and Ranking
 
 
 ```json 
-	{
-		"speaker": "interviewee",
-		"paragraphId": 1,
-		"question":"What do I 'm coming to speak at open source to?",
-		"answer": "Well I 'm coming to speak at open source open society to talk to people about how we can apply the concepts of the open source movement to larger parts of society.",
-		"confidence": 1.2249347799141348
+{
+	"speaker": "interviewee",
+	"paragraphId": 1,
+	"question":"What do I 'm coming to speak at open source to?",
+	"answer": "Well I 'm coming to speak at open source open society to talk to people about how we can apply the concepts of the open source movement to larger parts of society.",
+	"confidence": 1.2249347799141348
 }		
 ```
 
-Where question, answer, and confidence are what is returned by java jar, see this [exmaple output](Example output https://gist.github.com/Laurian/1115914)
+Where question, answer, and confidence are what is returned by java jar, see this [exmaple output](https://gist.github.com/Laurian/1115914)
 
 ```
 INPUT:
@@ -39,3 +42,9 @@ In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at Briti
 3.4447591093720233
 
 ```
+
+
+## Contributors
+
+- [Pietro](https://github.com/pietrop)
+- [Laurian](https://github.com/Laurian)
