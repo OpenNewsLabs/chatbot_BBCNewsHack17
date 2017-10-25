@@ -90,7 +90,7 @@ function getParagraphAsMessage(index) {
     channel: 'bbcnewshack17',
     icon_emoji: (transcript[index].speaker === 'Interviewer' ? ':sleuth_or_spy:' : ':speaking_head_in_silhouette:'),
     username: transcript[index].speaker  + ' ' + index + '/' + (transcript.length - 1),
-    text: text.replace(/\./g,'.\n\n')
+    text: text.replace(/\. /g,'.\n\n')
   };
 }
 
