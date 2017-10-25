@@ -16,9 +16,9 @@ TRANSCRIBE - transcribe last uploaded media
 PLAY - play transcript at reading speed
 PAUSE - pauses playing
 STOP - stop playing
-GOTO p / GO TO p / GO p - jump to paragraph number p, example: GOTO 5
-SHOW ALL QUESTIONS / ALLQ - show interviewer questions
-SHOW ALL ANSWERS / ALLA - show inteviewee replies
+GOTO p / GO TO p - jump to paragraph number p, example: GOTO 5
+SHOW ALL QUESTIONS - show interviewer questions
+SHOW ALL ANSWERS - show inteviewee replies
 SUMMARY - show summary of interviewee replies
 
 Note that you can also type these comands lowercase
@@ -90,7 +90,7 @@ function getParagraphAsMessage(index) {
     channel: 'bbcnewshack17',
     icon_emoji: (transcript[index].speaker === 'Interviewer' ? ':sleuth_or_spy:' : ':speaking_head_in_silhouette:'),
     username: transcript[index].speaker  + ' ' + index + '/' + (transcript.length - 1),
-    text: text.replace(/\./g,'.\n')
+    text: text
   };
 }
 
@@ -220,7 +220,7 @@ controller.hears([ 'STOP'], 'direct_message,direct_mention,mention', function(bo
 });
 
 
-controller.hears(['GOTO (.*)', 'GO TO (.*)', 'GO (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['GOTO (.*)', 'GO TO (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
   var para = parseInt(message.match[1]);
   timers.clearTimeout(playTimeout);
   currentPara = para;
@@ -263,11 +263,20 @@ controller.hears(['HELP'], 'direct_message,direct_mention,mention', function(bot
   bot.reply(message, helpMessage);
 });
 
+function getTranscriptText() {
+    const t = [];
+    for(let i = 0; i < transcript.length; i++) {
+      const {text, username} = getParagraphAsMessage(i);
+      t.push(`${username} ${text}`);
+    }
+    return t.join('\n');
+}
+
 controller.hears(['DOWNLOAD'], 'direct_message,direct_mention,mention', function(bot, message) {
   request.post('https://slack.com/api/files.upload').form({
         token: process.env.stoken,
         channels: 'bbcnewshack17',
-        content: 'zee transcript',
+        content: getTranscriptText(),
         filename: 'transcript.txt'
   }, function(err, httpResponse, body){
     console.log(err, body);
