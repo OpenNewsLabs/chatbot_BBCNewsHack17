@@ -28,7 +28,8 @@ Proof of concept demo of chatbot conversational interface for transcription serv
 
 ![Demo 1](giffs/transcriptionSlackBotDemo1.gif)
 
-- The bot can also provide you an automated summary/"most significant quotes" selection `@bot summary`
+- The bot can also provide you an automated summary/"most significant quotes" selection `@bot summary`.
+- and you can use `@bot go to 5` to go go to paragraph 5 for example, if you'd like to see the quote in context. 
 
 ![demo 2](giffs/transcriptionSlackBotDemo2.gif)
 
