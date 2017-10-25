@@ -28,18 +28,22 @@ Using ["Question Generation via Overgenerating Transformations and Ranking
 
 Where question, answer, and confidence are what is returned by java jar, see this [exmaple output](https://gist.github.com/Laurian/1115914)
 
-```
-INPUT:
 
-"Napoleon Bonaparte was born on 15 August 1769 in Corsica into a gentry family. Educated at military school, he was rapidly promoted and in 1796, was made commander of the French army in Italy, where he forced Austria and its allies to make peace. In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. He was stranded when his fleet was destroyed by the British at the Battle of the Nile."
+**INPUT**:
 
-OUTPUT (Question + Source/Answer + score):
+>"Napoleon Bonaparte was born on 15 August 1769 in Corsica into a gentry family. Educated at military school, he was rapidly promoted and in 1796, was made commander of the French army in Italy, where he forced Austria and its allies to make peace. In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. He was stranded when his fleet was destroyed by the British at the Battle of the Nile."
 
-What did Napoleon conquer Ottoman-ruled Egypt in in 1798?	
+**OUTPUT** 
 
-In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. in an attempt to strike at British trade routes with India 
+- **Question**: 
 
-3.4447591093720233
+> What did Napoleon conquer Ottoman-ruled Egypt in in 1798?	
+
+- **Source/Answer**: 
+
+> In 1798, Napoleon conquered Ottoman-ruled Egypt in an attempt to strike at British trade routes with India. in an attempt to strike at British trade routes with India 
+
+- **score**: 3.4447591093720233
 
 ```
 
