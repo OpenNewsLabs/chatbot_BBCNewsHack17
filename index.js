@@ -105,7 +105,7 @@ function getQAasMessage(index) {
 
   return {
     channel: 'bbcnewshack17',
-    // 'username': speaker + ` ${index}/${qa.length}` ,
+    '_username': speaker + ` ${index}/${qa.length}` ,
     'text': '',
     'attachments': [
       {
@@ -131,7 +131,7 @@ function getQAasMessage2(index) {
 
   return {
     channel: 'bbcnewshack17',
-    // 'username': speaker + ` ${index}/${qa.length}` ,
+    '_username': speaker + ` ${index}/${qa.length}` ,
     'text': '',
     'attachments': [
       {
@@ -191,15 +191,15 @@ function qaNextQ() {
     return;
   }
 
-  // if (getQAasMessage(currentQ).username.startsWith('interviewer')) {
+  if (getQAasMessage2(currentQ)._username.startsWith('interviewee')) {
     bot.say(getQAasMessage2(currentQ), function() {
       currentQ++;
       qaNextQ();
     });
-  // } else {
-  //   currentQ++;
-  //   qaNextQ();
-  // }
+  } else {
+    currentQ++;
+    qaNextQ();
+  }
 }
 
 controller.hears(['PLAY'], 'direct_message,direct_mention,mention', function(bot, message) {
