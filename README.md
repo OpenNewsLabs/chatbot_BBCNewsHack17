@@ -13,7 +13,7 @@ Proof of concept demo of chatbot conversational interface for transcription serv
 ## Question verification component / summariztion 
 
 Using ["Question Generation via Overgenerating Transformations and Ranking
-"](https://www.cs.cmu.edu/~ark/mheilman/questions/) system. 
+"](https://www.cs.cmu.edu/~ark/mheilman/questions/) system, as a summarization tool.
 
 
 ```json 
