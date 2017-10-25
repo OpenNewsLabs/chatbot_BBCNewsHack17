@@ -10,6 +10,19 @@ const axios = require('axios');
 const transcript = require('./sample-transcript.json');
 const qa = require('./question_verification_sample.json');
 
+var helpMessage = `
+TRANSCRIBE - transcribe last uploaded media
+PLAY - play transcript at reading speed
+PAUSE - pauses playing
+STOP - stop playing
+GOTO p / GO TO p - jump to paragraph number p, example: GOTO 5
+SHOW ALL QUESTIONS - show interviewer questions
+SHOW ALL ANSWERS - show inteviewee replies
+SUMMARY - show summary of interviewee replies
+
+Note that you can also type these comands lowercase
+  `
+
 if (!process.env.token) {
     console.log('Error: Specify token in environment');
     process.exit(1);
@@ -123,7 +136,7 @@ function getQAasMessage2(index) {
       {
         'fallback': `${question}: ${answer}`,
         'title': '',
-        'text': answer,
+        'text': `*${paragraphId}* - ${answer}`,
         'color': '#7CD197'
       }
     ],
@@ -192,11 +205,19 @@ controller.hears(['PLAY'], 'direct_message,direct_mention,mention', function(bot
   play();
 });
 
-controller.hears(['PAUSE', 'STOP'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['PAUSE'], 'direct_message,direct_mention,mention', function(bot, message) {
   playing = false;
   timers.clearTimeout(playTimeout);
   bot.reply(message, 'PAUSED at ' + currentPara);
 });
+
+controller.hears([ 'STOP'], 'direct_message,direct_mention,mention', function(bot, message) {
+  playing = false;
+  currentPara = 0;
+  timers.clearTimeout(playTimeout);
+  bot.reply(message, 'STOPPED at ' + currentPara+' Rewinding to beginning of transcription');
+});
+
 
 controller.hears(['GOTO (.*)', 'GO TO (.*)'], 'direct_message,direct_mention,mention', function(bot, message) {
   var para = parseInt(message.match[1]);
@@ -238,15 +259,7 @@ controller.hears(['SHOW ALL ANSWERS', 'ALLA'], 'direct_message,direct_mention,me
 });
 
 controller.hears(['HELP'], 'direct_message,direct_mention,mention', function(bot, message) {
-  bot.reply(message, `
-TRANSCRIBE - transcribe last uploaded media
-PLAY - play transcript at reading speed
-PAUSE / STOP - stop playing
-GOTO p / GO TO p - jump to paragraph number p, example: GOTO 5
-SHOW ALL QUESTIONS - show interviewer questions
-SHOW ALL ANSWERS - show inteviewee replies
-SUMMARY - show summary of interviewee replies
-  `);
+  bot.reply(message, helpMessage);
 });
 
 controller.hears(['DOWNLOAD'], 'direct_message,direct_mention,mention', function(bot, message) {
@@ -315,7 +328,7 @@ controller.on('file_shared', function(bot, message) {
     console.log(message);
     bot.say({
       channel: 'bbcnewshack17',
-      text: 'If you want me to transcribe this file, use @bot TRANSCRIBE, for more options use @bot HELP',
+      text: `If you want me to transcribe this file, use @bot TRANSCRIBE, for more options use @bot HELP ${helpMessage}`,
     });
     // message.type = 'message';
     // message.channel = 'bbcnewshack17';
