@@ -10,6 +10,18 @@ Proof of concept demo of chatbot conversational interface for transcription serv
 - [Video of presentation]() _coming soon_.
 
 
+## Demo giffs
+
+- Adding an audio file triggeres the bot 
+- You can then request a transcription `@bot transcribe`
+- When the transcriptin is ready, after about 3 mintues, no matter the length of the media, you can view it with `@bot play`
+
+![Demo 1](giffs/transcriptionSlackBotDemo1.gif)
+
+- The bot can also provide you an automated summary/"most significant quotes" selection `@bot summary`
+
+![demo 2](giffs/transcriptionSlackBotDemo2.gif)
+
 ## Question verification component / summariztion 
 
 Using ["Question Generation via Overgenerating Transformations and Ranking
