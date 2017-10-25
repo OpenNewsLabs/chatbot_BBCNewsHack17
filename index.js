@@ -214,9 +214,9 @@ controller.hears(['PAUSE'], 'direct_message,direct_mention,mention', function(bo
 
 controller.hears([ 'STOP'], 'direct_message,direct_mention,mention', function(bot, message) {
   playing = false;
-  currentPara = 0;
   timers.clearTimeout(playTimeout);
   bot.reply(message, 'STOPPED at ' + currentPara+' Rewinding to beginning of transcription');
+  currentPara = 0;
 });
 
 
