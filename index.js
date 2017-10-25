@@ -243,7 +243,7 @@ controller.hears(['SUMMARY'], 'direct_message,direct_mention,mention', function(
 });
 
 controller.hears(['TRANSCRIBE'], 'direct_message,direct_mention,mention', function(bot, message) {
-  bot.reply(message, 'transcribing...', () => {
+  bot.reply(message, 'transcribing... Your transcription will be ready in 3 minutes.', () => {
     playing = false;
     currentPara = 0;
     bot.say({
